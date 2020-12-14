@@ -3,3 +3,5 @@
 /Users/aurelianoyepez/Desktop/rustDistributedSytems/kvs/target/debug/deps/kvs-6d7e4188fe60a04b.d: src/bin/kvs.rs
 
 src/bin/kvs.rs:
+
+# env-dep:CARGO_PKG_VERSION=0.1.0

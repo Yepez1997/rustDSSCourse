@@ -2,41 +2,42 @@
 use clap::{App, Arg, SubCommand};
 use std::process;
 
+
 fn main() {
     println!("rust distributed sytems ....");
-    let matches = App::new("MyApp")
+    let matches = App::new("KVstore")
         .version("1.0")
-        .author("Kevin K. <kbknapp@gmail.com>")
-        .about("Does awesome things")
+        .author("Aureliano Y. <yepez4845@gmail.com>")
+        .about("Distributed Key Value Store")
         .arg(
-            Arg::with_name("config")
-                .short("c")
-                .long("config")
-                .value_name("FILE")
-                .help("Sets a custom config file")
-                .takes_value(true),
+            Arg::with_name("get")
+                .takes_value(true)
+                .index(1)
+                .help("get key from store ex. get key"),
         )
         .arg(
-            Arg::with_name("output")
-                .help("Sets an optional output file")
-                .index(1),
+            Arg::with_name("set")
+                .help("set key to store ex. set key value")
         )
         .arg(
-            Arg::with_name("debug")
-                .short("d")
-                .multiple(true)
-                .help("Turn debugging information on"),
+            Arg::with_name("remove")
+                .help("remove key from store ex.remove key")
         )
-        .subcommand(
-            SubCommand::with_name("test")
-                .about("does testing things")
-                .arg(Arg::with_name("list").short("l").help("lists test values")),
+        .arg(
+            Arg::with_name("version")
+                .short("V"),
         )
         .get_matches();
 
 
-    if let Some(o) = matches.value_of("output") {
+    if let Some(o) = matches.value_of("get") {
         println!("Value for output: {}", o);
+    }
+
+    if let Some(o) = matches.value_of("V") {
+        println!("here");
+        let version = env!("CARGO_PKG_VERSION");
+        println!("CARGO VERSION : {}", version);
     }
 
     std::process::exit(1);
