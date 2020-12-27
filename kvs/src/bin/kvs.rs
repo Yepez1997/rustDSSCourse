@@ -4,7 +4,7 @@ use std::process;
 
 
 fn main() {
-    println!("rust distributed sytems ....");
+
     let matches = App::new("KVstore")
         .version("1.0")
         .author("Aureliano Y. <yepez4845@gmail.com>")
@@ -30,8 +30,11 @@ fn main() {
         .get_matches();
 
 
+    // if let Some(o) = matches.value_of("get") {
+    //    println!("Value for output: {}", o);
+    // }
     if let Some(o) = matches.value_of("get") {
-        println!("Value for output: {}", o);
+        println!("Value for get: {}", o);
     }
 
     if let Some(o) = matches.value_of("V") {
